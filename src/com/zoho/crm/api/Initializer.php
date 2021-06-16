@@ -122,7 +122,7 @@ class Initializer
             { 
                 if(is_null(self::$jsonDetails))
                 {
-                    self::$jsonDetails = json_decode(file_get_contents(explode("src", realpath(__DIR__))[0] . Constants::JSON_DETAILS_FILE_PATH), true);
+                    self::$jsonDetails = json_decode(file_get_contents(realpath(__DIR__ . "/../../../../..") . "/" . Constants::JSON_DETAILS_FILE_PATH), true);
                 }
             }
             catch (\Exception $ex)

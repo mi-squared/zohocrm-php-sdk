@@ -79,7 +79,7 @@ class Utility
 
             if (!file_exists($resourcesPath)) 
             {
-                mkdir($resourcesPath);
+                mkdir($resourcesPath, 0777, true);
             }
 
             $recordFieldDetailsPath = $resourcesPath . DIRECTORY_SEPARATOR . self::getFileName();
@@ -335,7 +335,7 @@ class Utility
 
             if (!file_exists($resourcesPath))
             {
-                mkdir($resourcesPath);
+                mkdir($resourcesPath, 0777, true);
             }
 
             $recordFieldDetailsPath = $resourcesPath . DIRECTORY_SEPARATOR . self::getFileName();

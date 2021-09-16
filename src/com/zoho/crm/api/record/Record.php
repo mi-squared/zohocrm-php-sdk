@@ -5,11 +5,28 @@ use com\zoho\crm\api\tags\Tag;
 use com\zoho\crm\api\users\User;
 use com\zoho\crm\api\util\Model;
 
-class Record implements Model
+class Record implements Model, \JsonSerializable
 {
 
 	protected  $keyValues=array();
 	private  $keyModified=array();
+
+	/**
+	 * Returns an object to be serialized in json
+	 */
+	public function jsonSerialize()
+	{
+		$data = [];
+		if ($this->getId()) {
+			$data['id'] = $this->getId();
+		}
+
+		foreach ($this->keyModified as $key => $modified) {
+			$data[$key] = $this->getKeyValue($key);
+		}
+
+		return $data;
+	}
 
 	/**
 	 * The method to get the id
